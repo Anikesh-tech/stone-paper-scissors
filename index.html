@@ -1,0 +1,164 @@
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    #user img,#comp img{
+        width: 35vw;
+        height: 200px;
+    }
+    button img{
+        opacity: 0.7;
+    }
+    button img:hover{
+        opacity: 1;
+    }
+    #time{
+        margin-top: 80px;
+        background-color:rgb(245, 20, 20);
+        width: 15vw;
+        height: 40px;
+        color: white;
+    }
+</style>
+<body bgcolor="black" id="status">  <br>
+    <h1 style="color: white;text-align: center;">STONE PAPER SCISSOR</h1><br>
+    <h4 style="color: red;text-align: center;" id="final">start Now</h4>
+<div style="display: flex; justify-content: space-around;">
+
+    <div id="user">
+        <h3 style="color: white;text-align: center;">User Score <span id="us">0</span></h3>
+        <img id="ui" src="start.gif" alt=""></div>
+        <div id="time">
+           <center><h2><span id="timer" >60</span> sec</h2></center> 
+
+
+        </div>
+    <div id="comp">
+        <h3 style="color: white;text-align: center;">Comp Score <span id="Cs">0</span></h3>
+        <img id="ci" src="start.gif" alt=""></div>
+
+</div><br> <br>
+<center>
+    <h4 style="color: crimson;text-align: center;">you choices</h4><br>
+    <button><img src="paPER14.png" alt="" width="80" style="border-radius:50%" onclick="play(0)"></button>
+    <button><img src="ROCK.webp" alt="" width="80" style="border-radius:50%" onclick="play(1)"></button>
+    <button><img src="scissor13.jpeg" alt="" width="80" style="border-radius:50%" onclick="play(2)"></button>
+</center>
+</body>
+<script>
+    a=["paPER14.png","ROCK.webp","scissor13.jpeg"]
+    cs=0
+    us=0
+    function play(num) {
+        cc=Math.floor(Math.random()*3)
+       document.getElementById("ui").src=a[num]
+       document.getElementById("ci").src=a[cc]
+       if(num==0){
+        if(cc==0){
+         document.getElementById("final").innerHTML="Draw"        }
+       
+      else if(cc==1){
+         document.getElementById("final").innerHTML="User Win";
+         us++;      
+         document.getElementById("us").innerHTML=us;
+         }
+         else{
+         document.getElementById("final").innerHTML="Computer Win";
+         cs++;      
+         document.getElementById("Cs").innerHTML=cs;
+         }
+       }
+       if(num==1){
+        if(cc==1){
+         document.getElementById("final").innerHTML="Draw"        }
+       
+      else if(cc==2){
+         document.getElementById("final").innerHTML="User Win";
+         us++;      
+         document.getElementById("us").innerHTML=us;
+         }
+         else{
+         document.getElementById("final").innerHTML="Computer Win";
+         cs++;      
+         document.getElementById("Cs").innerHTML=cs;
+         }
+       }
+       if(num==2){
+        if(cc==2){
+         document.getElementById("final").innerHTML="Draw"        }
+       
+      else if(cc==0){
+         document.getElementById("final").innerHTML="User Win";
+         us++;      
+         document.getElementById("us").innerHTML=us;
+         }
+         else{
+         document.getElementById("final").innerHTML="Computer Win";
+         cs++;      
+         document.getElementById("Cs").innerHTML=cs;
+         }
+       } 
+    }
+    Timer=60
+    function restart(){
+        cs=0
+        us=0
+        Timer=60
+        op= setInterval(time,1000)
+        document.getElementById("status").innerHTML=`  <br>
+    <h1 style="color: white;text-align: center;">STONE PAPER SCISSOR</h1><br>
+    <h4 style="color: red;text-align: center;" id="final">start Now</h4>
+<div style="display: flex; justify-content: space-around;">
+
+    <div id="user">
+        <h3 style="color: white;text-align: center;">User Score <span id="us">0</span></h3>
+        <img id="ui" src="start.gif" alt=""></div>
+        <div id="time">
+            <h2><span id="timer">60</span> sec</h2>
+            <button id="restartButton" style="display: none;">Restart</button>
+
+        </div>
+    <div id="comp">
+        <h3 style="color: white;text-align: center;">Comp Score <span id="Cs">0</span></h3>
+        <img id="ci" src="start.gif" alt=""></div>
+
+</div><br> <br>
+<center>
+    <h4 style="color: crimson;text-align: center;">you choices</h4><br>
+    <button><img src="paPER14.png" alt="" width="80" style="border-radius:50%" onclick="play(0)"></button>
+    <button><img src="ROCK.webp" alt="" width="80" style="border-radius:50%" onclick="play(1)"></button>
+    <button><img src="scissor13.jpeg" alt="" width="80" style="border-radius:50%" onclick="play(2)"></button>
+</center>
+        `
+    }
+    function time(){
+       
+        if(timer==0){
+            document.getElementById("timer").innerHTML="Time Up";
+        }
+        else{
+       
+            Timer--
+            document.getElementById("timer").innerHTML=Timer;
+        }
+        if(Timer==0){
+  stop()
+  if(cs>us){
+  document.getElementById("status").innerHTML="<br><br><center><img src='loosers.gif' style='width:40vw;height:300px'><br><br><br><button style='color:white;background:red;width:100px;border:none' onclick='restart()'>Play Again!</button></center>";
+  }
+  if(cs==us){
+  document.getElementById("status").innerHTML="<br><br><center><img src='draw.gif' style='width:40vw;height:300px'><br><br><br><button style='color:white;background:red;width:100px;border:none' onclick='restart()'>Play Again!</button></center>";
+  }
+  else{
+    document.getElementById("status").innerHTML="<br><br><center><img src='WINNER.gif' style='width:40vw;height:300px'><br><br><br><button style='color:white;background:red;width:100px;border:none' onclick='restart()'>Play Again!</button></center>";
+  
+  }
+        }
+
+    }
+   op= setInterval(time,1000)
+   function stop(){
+    clearInterval(op)
+   }
+</script>
